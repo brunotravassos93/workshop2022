@@ -33,15 +33,24 @@ let dados = [
 
 let elementH1 = document.querySelector('h1')
 
-for (let item of dados) {
+for (let objects of dados) {
   let elementArticle = document.createElement('article')
   elementArticle.classList.add('monstros')
   elementArticle.innerHTML = `
-    <img src="https://robohash.org/NFF.png?set=set2&size=150x150" alt="avatar" />
+    <img src="${objects.image}" alt="avatar" />
     <div>
-    <h2>nome</h2>
-    <p>e-mail</p>
+    <h2>${objects.name}</h2>
+    <p>${objects.email}</p>
     </div>
     `
   elementH1.insertAdjacentElement('afterend', elementArticle)
 }
+
+let buttonLimpar = document.querySelector('.btn-azul')
+
+buttonLimpar.addEventListener('click', () => {
+  let articles = document.querySelectorAll('article');
+  for (let i = 0; i < articles.length; i++) {
+    articles[i].remove();
+  }
+})

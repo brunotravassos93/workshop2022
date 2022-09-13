@@ -10,14 +10,14 @@ fetch('https://jsonplaceholder.typicode.com/users', {
     return response.json()
   })
   .then((json) => {
-    dados = json;
-    console.log(json)
+    dados = json.slice(0, 5);
+    elementH1.innerText = `${dados.length} monstros`
 
     for (let objects of dados) {
       let elementArticle = document.createElement('article')
       elementArticle.classList.add('monstros')
       elementArticle.innerHTML = `
-      <img src="${json.image}" alt="avatar" />
+      <img src="https://robohash.org/${objects.id}?set=set2" alt="avatar" />
       <div>
       <h2>${objects.name}</h2>
       <p>${objects.email}</p>
